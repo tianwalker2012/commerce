@@ -363,7 +363,7 @@ class discuz_database_safecheck {
 	private static function _do_query_safe($sql) {
 		$sql = str_replace(array('\\\\', '\\\'', '\\"', '\'\''), '', $sql);
 		$mark = $clean = '';
-		if (strpos($sql, '/') === false && strpos($sql, '#') === false && strpos($sql, '-- ') === false && strpos($sql, '@') === false && strpos($sql, '`') === false) {
+		if (strpos($sql, '/') === false && strpos($sql, '#') === false && strpos($sql, '-- ') === false) {
 			$clean = preg_replace("/'(.+?)'/s", '', $sql);
 		} else {
 			$len = strlen($sql);
@@ -371,14 +371,6 @@ class discuz_database_safecheck {
 			for ($i = 0; $i < $len; $i++) {
 				$str = $sql[$i];
 				switch ($str) {
-					case '`':
-						if(!$mark) {
-							$mark = '`';
-							$clean .= $str;
-						} elseif ($mark == '`') {
-							$mark = '';
-						}
-						break;
 					case '\'':
 						if (!$mark) {
 							$mark = '\'';
@@ -422,9 +414,7 @@ class discuz_database_safecheck {
 				$clean .= $mark ? '' : $str;
 			}
 		}
-		if(strpos($clean, '@') !== false) {
-			return '-3';
-		}
+
 		$clean = preg_replace("/[^a-z0-9_\-\(\)#\*\/\"]+/is", "", strtolower($clean));
 
 		if (self::$config['afullnote']) {

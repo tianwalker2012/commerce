@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Identify: a752c9974960f469d5f9c151725a6cb7
+//Identify: a2ccc77bdb9ebe6a8cba87be2f556457
 
 $domain = array (
   'defaultindex' => 'forum.php',

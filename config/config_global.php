@@ -14,7 +14,7 @@ $_config['db']['1']['tablepre'] = 'pre_';
 $_config['db']['common']['slave_except_table'] = '';
 
 // --------------------------  CONFIG MEMORY  --------------------------- //
-$_config['memory']['prefix'] = 'kuRqVi_';
+$_config['memory']['prefix'] = 'CJ1fAc_';
 $_config['memory']['redis']['server'] = '';
 $_config['memory']['redis']['port'] = 6379;
 $_config['memory']['redis']['pconnect'] = 1;
@@ -51,12 +51,12 @@ $_config['output']['ajaxvalidate'] = '0';
 $_config['output']['iecompatible'] = '0';
 
 // --------------------------  CONFIG COOKIE  --------------------------- //
-$_config['cookie']['cookiepre'] = 'QifM_';
+$_config['cookie']['cookiepre'] = 'FZg7_';
 $_config['cookie']['cookiedomain'] = '';
 $_config['cookie']['cookiepath'] = '/';
 
 // -------------------------  CONFIG SECURITY  -------------------------- //
-$_config['security']['authkey'] = '27ed3byRMffjpIRK';
+$_config['security']['authkey'] = '735d72tyoibqKEJF';
 $_config['security']['urlxssdefend'] = 1;
 $_config['security']['attackevasive'] = '0';
 $_config['security']['querysafe']['status'] = 1;
