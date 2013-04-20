@@ -1,4 +1,0 @@
-commerce
-========
-
-Backend for ecommerce
