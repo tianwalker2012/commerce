@@ -15,7 +15,6 @@ class helper_pm {
 
 
 	public static function sendpm($toid, $subject, $message, $fromid = '', $replypmid = 0, $isusername = 0, $type = 0) {
-		file_put_contents("e:/xxxx.log", "-----接受者的id-------".$toid."主题-------".$subject."发送者-------".$fromid."最后一条的idreplypmid-------".$replypmid."type-------".$type."\r\n",FILE_APPEND);
 		global $_G;
 		if($fromid === '') {
 			$fromid = $_G['uid'];

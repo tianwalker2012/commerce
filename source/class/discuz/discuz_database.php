@@ -51,7 +51,7 @@ class discuz_database {
 	public static function insert($table, $data, $return_insert_id = false, $replace = false, $silent = false) {
 
 		$sql = self::implode($data);
-		
+
 		$cmd = $replace ? 'REPLACE INTO' : 'INSERT INTO';
 
 		$table = self::table($table);
@@ -75,7 +75,7 @@ class discuz_database {
 		} else {
 			$where = $condition;
 		}
-		 $res = self::query("$cmd $table SET $sql WHERE $where", $unbuffered ? 'UNBUFFERED' : '');
+		$res = self::query("$cmd $table SET $sql WHERE $where", $unbuffered ? 'UNBUFFERED' : '');
 		return $res;
 	}
 
@@ -95,7 +95,7 @@ class discuz_database {
 	}
 
 	public static function fetch_all($sql, $arg = array(), $keyfield = '', $silent=false) {
-  
+
 		$data = array();
 		$query = self::query($sql, $arg, $silent, false);
 		while ($row = self::$db->fetch_array($query)) {
@@ -121,7 +121,6 @@ class discuz_database {
 	}
 
 	public static function query($sql, $arg = array(), $silent = false, $unbuffered = false) {
-		
 		if (!empty($arg)) {
 			if (is_array($arg)) {
 				$sql = self::format($sql, $arg);
@@ -134,11 +133,9 @@ class discuz_database {
 		}
 		self::checkquery($sql);
 
-		  $ret = self::$db->query($sql, $silent, $unbuffered);
+		$ret = self::$db->query($sql, $silent, $unbuffered);
 		if (!$unbuffered && $ret) {
-		  
-			  $cmd = trim(strtoupper(substr($sql, 0, strpos($sql, ' '))));
-			 
+			$cmd = trim(strtoupper(substr($sql, 0, strpos($sql, ' '))));
 			if ($cmd === 'SELECT') {
 
 			} elseif ($cmd === 'UPDATE' || $cmd === 'DELETE') {
@@ -155,7 +152,7 @@ class discuz_database {
 	}
 
 	public static function affected_rows() {
-		 return self::$db->affected_rows();
+		return self::$db->affected_rows();
 	}
 
 	public static function free_result($query) {
@@ -287,7 +284,6 @@ class discuz_database {
 			$sql .= $comma . self::quote_field($k) . '=' . self::quote($v);
 			$comma = $glue;
 		}
-		
 		return $sql;
 	}
 
@@ -367,7 +363,7 @@ class discuz_database_safecheck {
 	private static function _do_query_safe($sql) {
 		$sql = str_replace(array('\\\\', '\\\'', '\\"', '\'\''), '', $sql);
 		$mark = $clean = '';
-		if (strpos($sql, '/') === false && strpos($sql, '#') === false && strpos($sql, '-- ') === false) {
+		if (strpos($sql, '/') === false && strpos($sql, '#') === false && strpos($sql, '-- ') === false && strpos($sql, '@') === false && strpos($sql, '`') === false) {
 			$clean = preg_replace("/'(.+?)'/s", '', $sql);
 		} else {
 			$len = strlen($sql);
@@ -375,6 +371,14 @@ class discuz_database_safecheck {
 			for ($i = 0; $i < $len; $i++) {
 				$str = $sql[$i];
 				switch ($str) {
+					case '`':
+						if(!$mark) {
+							$mark = '`';
+							$clean .= $str;
+						} elseif ($mark == '`') {
+							$mark = '';
+						}
+						break;
 					case '\'':
 						if (!$mark) {
 							$mark = '\'';
@@ -418,11 +422,9 @@ class discuz_database_safecheck {
 				$clean .= $mark ? '' : $str;
 			}
 		}
-
 		if(strpos($clean, '@') !== false) {
 			return '-3';
 		}
-		
 		$clean = preg_replace("/[^a-z0-9_\-\(\)#\*\/\"]+/is", "", strtolower($clean));
 
 		if (self::$config['afullnote']) {

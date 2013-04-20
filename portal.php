@@ -29,7 +29,6 @@ runhooks();
 $navtitle = str_replace('{bbname}', $_G['setting']['bbname'], $_G['setting']['seotitle']['portal']);
 $_G['disabledwidthauto'] = 1;
 
- 
 require_once libfile('portal/'.$_GET['mod'], 'module');
 
 ?>

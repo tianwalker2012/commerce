@@ -21,6 +21,7 @@ define('UC_DATADIR', UC_ROOT.'./data/');
 define('UC_DATAURL', UC_API.'/data');
 define('UC_API_FUNC', UC_CONNECT == 'mysql' ? 'uc_api_mysql' : 'uc_api_post');
 $GLOBALS['uc_controls'] = array();
+
 function uc_addslashes($string, $force = 0, $strip = FALSE) {
 	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 	if(!MAGIC_QUOTES_GPC || $force) {
@@ -288,7 +289,6 @@ function uc_friend_delete($uid, $friendids) {
 }
 
 function uc_friend_totalnum($uid, $direction = 0) {
-	 
 	return call_user_func(UC_API_FUNC, 'friend', 'totalnum', array('uid'=>$uid, 'direction'=>$direction));
 }
 
@@ -304,7 +304,7 @@ function uc_user_register($username, $password, $email, $questionid = '', $answe
 function uc_user_login($username, $password, $isuid = 0, $checkques = 0, $questionid = '', $answer = '') {
 	$isuid = intval($isuid);
 	$return = call_user_func(UC_API_FUNC, 'user', 'login', array('username'=>$username, 'password'=>$password, 'isuid'=>$isuid, 'checkques'=>$checkques, 'questionid'=>$questionid, 'answer'=>$answer));
-	 return UC_CONNECT == 'mysql' ? $return : uc_unserialize($return);
+	return UC_CONNECT == 'mysql' ? $return : uc_unserialize($return);
 }
 
 function uc_user_synlogin($uid) {
@@ -432,7 +432,7 @@ function uc_pm_list($uid, $page = 1, $pagesize = 10, $folder = 'inbox', $filter 
 	$uid = intval($uid);
 	$page = intval($page);
 	$pagesize = intval($pagesize);
-	 $return = call_user_func(UC_API_FUNC, 'pm', 'ls', array('uid'=>$uid, 'page'=>$page, 'pagesize'=>$pagesize, 'filter'=>$filter, 'msglen'=>$msglen));
+	$return = call_user_func(UC_API_FUNC, 'pm', 'ls', array('uid'=>$uid, 'page'=>$page, 'pagesize'=>$pagesize, 'filter'=>$filter, 'msglen'=>$msglen));
 	return UC_CONNECT == 'mysql' ? $return : uc_unserialize($return);
 }
 

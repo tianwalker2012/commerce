@@ -95,15 +95,6 @@ class table_common_member_profile extends discuz_table_archive
 		}
 		return $birthlist;
 	}
-	
-	function updatetoken($uid,$token)
-	{
-		 
-		 return $data = DB::query('UPDATE '.DB::table($this->_table)." SET token= '"."".$token.""."' WHERE uid =".$uid);
-		
-	}
-	
-	
 }
 
 ?>

@@ -74,7 +74,6 @@ class ucclient_db {
 	}
 
 	function fetch_all($sql, $id = '') {
-	 
 		$arr = array();
 		$query = $this->query($sql);
 		while($data = $this->fetch_array($query)) {

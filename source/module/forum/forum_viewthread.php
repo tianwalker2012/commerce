@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
- require_once libfile('function/forumlist');
+require_once libfile('function/forumlist');
 require_once libfile('function/discuzcode');
 require_once libfile('function/post');
 
@@ -518,20 +518,17 @@ if($maxposition) {
 if($_GET['checkrush'] && $rushreply) {
 	$_G['forum_thread']['replies'] = $temp_reply;
 }
-              
+
+
 if(!$maxposition && empty($postarr)) {
- 
- 
+
 	if(empty($_GET['viewpid'])) {
 		if($_G['forum_thread']['special'] == 2) {
-			  $postarr = C::t('forum_post')->fetch_all_tradepost_viewthread_by_tid($_G['tid'], $visibleallflag, $_GET['authorid'], $tpids, $_G['forum_pagebydesc'], $ordertype, $start_limit, ($_G['forum_pagebydesc'] ? $_G['forum_ppp2'] : $_G['ppp']));
-		 
+			$postarr = C::t('forum_post')->fetch_all_tradepost_viewthread_by_tid($_G['tid'], $visibleallflag, $_GET['authorid'], $tpids, $_G['forum_pagebydesc'], $ordertype, $start_limit, ($_G['forum_pagebydesc'] ? $_G['forum_ppp2'] : $_G['ppp']));
 		} elseif($_G['forum_thread']['special'] == 5) {
-			  $postarr = C::t('forum_post')->fetch_all_debatepost_viewthread_by_tid($_G['tid'], $visibleallflag, $_GET['authorid'], $_GET['stand'], $_G['forum_pagebydesc'], $ordertype, $start_limit, ($_G['forum_pagebydesc'] ? $_G['forum_ppp2'] : $_G['ppp']));
-	 
+			$postarr = C::t('forum_post')->fetch_all_debatepost_viewthread_by_tid($_G['tid'], $visibleallflag, $_GET['authorid'], $_GET['stand'], $_G['forum_pagebydesc'], $ordertype, $start_limit, ($_G['forum_pagebydesc'] ? $_G['forum_ppp2'] : $_G['ppp']));
 		} else {
-			 $postarr = C::t('forum_post')->fetch_all_common_viewthread_by_tid($_G['tid'], $visibleallflag, $_GET['authorid'], $_G['forum_pagebydesc'], $ordertype, $_G['forum_thread']['replies'] + 1, $start_limit, ($_G['forum_pagebydesc'] ? $_G['forum_ppp2'] : $_G['ppp']));
-			 
+			$postarr = C::t('forum_post')->fetch_all_common_viewthread_by_tid($_G['tid'], $visibleallflag, $_GET['authorid'], $_G['forum_pagebydesc'], $ordertype, $_G['forum_thread']['replies'] + 1, $start_limit, ($_G['forum_pagebydesc'] ? $_G['forum_ppp2'] : $_G['ppp']));
 		}
 	} else {
 		$post = array();
@@ -792,9 +789,9 @@ if($_G['forum_cachepid']) {
 if($_G['forum_attachpids'] && !defined('IN_ARCHIVER')) {
 	require_once libfile('function/attachment');
 	if(is_array($threadsortshow) && !empty($threadsortshow['sortaids'])) {
-		 $skipaids = $threadsortshow['sortaids'];
+		$skipaids = $threadsortshow['sortaids'];
 	}
- 	parseattach($_G['forum_attachpids'], $_G['forum_attachtags'], $postlist, $skipaids);
+	parseattach($_G['forum_attachpids'], $_G['forum_attachtags'], $postlist, $skipaids);
 }
 
 if(empty($postlist)) {
@@ -807,7 +804,7 @@ if(empty($postlist)) {
 
 if(defined('IN_ARCHIVER')) {
 	include loadarchiver('forum/viewthread');
-	 
+	exit();
 }
 
 $_G['forum_thread']['heatlevel'] = $_G['forum_thread']['recommendlevel'] = 0;

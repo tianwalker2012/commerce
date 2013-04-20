@@ -138,13 +138,13 @@ class table_forum_post extends discuz_table
 	}
 
 	public function fetch_visiblepost_by_tid($tableid, $tid, $start = 0, $order = 0) {
-		 return DB::fetch_first('SELECT * FROM %t WHERE tid=%d AND invisible=0 ORDER BY dateline '. ($order ? 'DESC' : '').' '. DB::limit($start, 1),
-		 	array(self::get_tablename($tableid), $tid));
+		return DB::fetch_first('SELECT * FROM %t WHERE tid=%d AND invisible=0 ORDER BY dateline '. ($order ? 'DESC' : '').' '. DB::limit($start, 1),
+				array(self::get_tablename($tableid), $tid));
 	}
 
 	public function fetch_threadpost_by_tid_invisible($tid, $invisible = null) {
-	 	return DB::fetch_first('SELECT * FROM %t WHERE tid=%d AND first=1'.($invisible !== null ? ' AND '.DB::field('invisible', $invisible) : ''),
-	 		array(self::get_tablename('tid:'.$tid), $tid));
+		return DB::fetch_first('SELECT * FROM %t WHERE tid=%d AND first=1'.($invisible !== null ? ' AND '.DB::field('invisible', $invisible) : ''),
+				array(self::get_tablename('tid:'.$tid), $tid));
 	}
 
 	public function fetch_pid_by_tid_authorid($tid, $authorid) {

@@ -65,8 +65,6 @@ class discuz_ftp
 	}
 
 	function upload($source, $target) {
-		var_dump($source);
-		exit();
 		if($this->error()) {
 			return 0;
 		}

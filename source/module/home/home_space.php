@@ -16,7 +16,7 @@ $dos = array('index', 'doing', 'blog', 'album', 'friend', 'wall',
 	'thread', 'trade', 'poll', 'activity', 'debate', 'reward', 'profile', 'plugin', 'follow');
 
 $do = (!empty($_GET['do']) && in_array($_GET['do'], $dos))?$_GET['do']:'index';
-file_put_contents("e:/fff.log", "最后一条的idreplypmid\r\n",FILE_APPEND);
+
 if(!in_array($do, array('home', 'doing', 'blog', 'album', 'share', 'wall'))) {
 	$_G['mnid'] = 'mn_common';
 }
@@ -34,8 +34,6 @@ if($_GET['username']) {
 	$uid = $member['uid'];
 	$member['self'] = $uid == $_G['uid'] ? 1 : 0;
 }
-//echo "<script>alrt('到这里了');</script>";
-
 
 if($_GET['view'] == 'admin') {
 	$_GET['do'] = $do;
@@ -43,8 +41,6 @@ if($_GET['view'] == 'admin') {
 if(empty($uid) || in_array($do, array('notice', 'pm'))) $uid = $_G['uid'];
 if(empty($_GET['do']) && !isset($_GET['diy'])) {
 	if($_G['adminid'] == 1) {
-		echo "<script>alrt('到这里了');</script>";
-		
 		if($_G['setting']['allowquickviewprofile']) {
 			if(!$_G['inajax']) dheader("Location:home.php?mod=space&uid=$uid&do=profile");
 		}

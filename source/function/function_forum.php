@@ -785,19 +785,14 @@ function updatepost($data, $condition, $unbuffered = false, $posttableid = false
 }
 
 function insertpost($data) {
-	 
-	 
 	if(isset($data['tid'])) {
 		$thread = C::t('forum_thread')->fetch($data['tid']);
 		$tableid = $thread['posttableid'];
 	} else {
 		$tableid = $data['tid'] = 0;
 	}
- 
-	
-	  $pid = C::t('forum_post_tableid')->insert(array('pid' => null), true);
+	$pid = C::t('forum_post_tableid')->insert(array('pid' => null), true);
 
-	 
 
 	$data = array_merge($data, array('pid' => $pid));
 

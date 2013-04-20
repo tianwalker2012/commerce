@@ -156,8 +156,8 @@ if($_GET['subop'] == 'view') {
 	}
 
 	if($filter == 'privatepm' || $filter == 'newpm') {
-	 	$result = uc_pm_list($_G['uid'], $page, $perpage, 'inbox', $filter, 200);
-	 	$count = $result['count'];
+		$result = uc_pm_list($_G['uid'], $page, $perpage, 'inbox', $filter, 200);
+		$count = $result['count'];
 		$list = $result['data'];
 	}
 

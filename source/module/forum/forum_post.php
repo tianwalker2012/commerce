@@ -13,15 +13,16 @@ if(!defined('IN_DISCUZ')) {
 define('NOROBOT', TRUE);
 
 cknewuser();
+
 require_once libfile('class/credit');
 require_once libfile('function/post');
 
 
-echo $pid = intval(getgpc('pid'));
-echo $sortid = intval(getgpc('sortid'));
-echo $typeid = intval(getgpc('typeid'));
-echo $special = intval(getgpc('special'));
- 
+$pid = intval(getgpc('pid'));
+$sortid = intval(getgpc('sortid'));
+$typeid = intval(getgpc('typeid'));
+$special = intval(getgpc('special'));
+
 $postinfo = array('subject' => '');
 $thread = array('readperm' => '', 'pricedisplay' => '', 'hiddenreplies' => '');
 

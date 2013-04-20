@@ -283,7 +283,6 @@ class pmmodel {
 	}
 
 	function replypm($plid, $fromuid, $fromusername, $message) {
-		file_put_contents("e:/eee.log", "回复的id".$plid."信息".$message."发送者id".$fromuid."姓名".$fromusername."\r\n",FILE_APPEND);
 		if(!$plid || !$fromuid || !$fromusername || !$message) {
 			return 0;
 		}

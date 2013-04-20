@@ -781,7 +781,6 @@ function libfile($libname, $folder = '') {
 	} else {
 		$path = "{$libpath}/{$libname}";
 	}
-	 echo  preg_match('/^[\w\d\/_]+$/i', $path) ? realpath(DISCUZ_ROOT.$path.'.php') : false;
 	return preg_match('/^[\w\d\/_]+$/i', $path) ? realpath(DISCUZ_ROOT.$path.'.php') : false;
 }
 
@@ -1571,7 +1570,6 @@ function manage_addnotify($type, $from_num = 0, $langvar = array()) {
 }
 
 function sendpm($toid, $subject, $message, $fromid = '', $replypmid = 0, $isusername = 0, $type = 0) {
-  	//file_put_contents("e:/ddd.log", "接受者的id".$toid."主题".$subject."发送者".$fromid."最后一条的idreplypmid".$replypmid."tyoe".$type."\r\n",FILE_APPEND);
 	return helper_pm::sendpm($toid, $subject, $message, $fromid, $replypmid, $isusername, $type);
 }
 
