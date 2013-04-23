@@ -49,7 +49,7 @@ class friendmodel {
 		return $affectedrows;
 	}
 
-	function get_totalnum_by_uid($uid, $direction = 0) {
+	function get_totalnum_by_uid($uid, $direction = 0) { 
 		$sqladd = '';
 		if($direction == 0) {
 			$sqladd = "uid='$uid'";

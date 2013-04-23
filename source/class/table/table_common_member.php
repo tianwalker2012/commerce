@@ -197,6 +197,51 @@ class table_common_member extends discuz_table_archive
 		return $users;
 	}
 
+	
+	function check_login($username, $password) {
+		$data=DB::fetch_first('SELECT salt,username,password FROM '.DB::table('ucenter_members'));
+		if($data)
+		{
+			if(md5(md5($password).$data['salt'])==$data['password'])
+			{
+				$data=$this->fetch_by_username($username);
+				
+				return $data;
+			}
+			else
+			{ 
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
+	
+	public function fetch_uid_by_user_id($uid, $fetch_archive = 0) {
+			if($uid) {
+				$uid = DB::fetch_all('SELECT * FROM %t WHERE uid=%s', array($this->_table, $uid));
+			   }
+			return $uid;
+		}
+	
+    public function fetch_search($item)
+    {
+    	if($item) {
+    		  
+    		$uid = DB::fetch_all("SELECT * FROM  pre_common_member WHERE username LIKE '"."%".$item."%"."'");
+    	}
+    	return $uid;
+    } 
+	
+	
+	
+	
+	
+	
 	public function count_by_email($email, $fetch_archive = 0) {
 		$count = 0;
 		if($email) {

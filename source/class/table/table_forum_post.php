@@ -205,6 +205,17 @@ class table_forum_post extends discuz_table
 		return $data;
 	}
 
+	
+	
+	public function postnum($uid)
+	{
+		if($uid) {
+				$uid = DB::fetch_all(' select count(pid) as num  from %t WHERE authorid=%s', array($this->_table, $uid));
+		    	}
+    	return $uid;
+	}
+	
+	
 	public function fetch_all_debatepost_viewthread_by_tid($tid, $visibleallflag, $authorid, $stand, $forum_pagebydesc, $ordertype, $start, $limit) {
 		$data = array();
 		$parameter = $this->handle_viewthread_parameter($visibleallflag, $authorid, $forum_pagebydesc, $ordertype, 'p.');

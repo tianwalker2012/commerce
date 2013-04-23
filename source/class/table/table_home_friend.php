@@ -135,6 +135,18 @@ class table_home_friend extends discuz_table
 		}
 		return DB::update($this->_table, $data, DB::field('uid', $uid).' AND '.DB::field('fuid', $fuid));
 	}
+	
+    public  function friendnum($uid){
+	       if($uid) {
+				$uid = DB::fetch_all('select count(*) as num from %t WHERE uid=%s', array($this->_table, $uid));
+			   }
+			return $uid;
+		   }
+	
+	
 }
+
+    
+
 
 ?>
