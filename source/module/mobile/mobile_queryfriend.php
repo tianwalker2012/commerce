@@ -30,5 +30,5 @@ foreach ($user as $k=>$v)
 }
 else
  { 
- 	echo  json_encode($back=array('result'=>'error'));
+ 	echo  json_encode($back=array('result'=>'没有联系人'));
  }
