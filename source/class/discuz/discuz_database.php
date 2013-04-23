@@ -95,7 +95,7 @@ class discuz_database {
 	}
 
 	public static function fetch_all($sql, $arg = array(), $keyfield = '', $silent=false) {
-
+ 
 		$data = array();
 		$query = self::query($sql, $arg, $silent, false);
 		while ($row = self::$db->fetch_array($query)) {
@@ -123,7 +123,7 @@ class discuz_database {
 	public static function query($sql, $arg = array(), $silent = false, $unbuffered = false) {
 		if (!empty($arg)) {
 			if (is_array($arg)) {
-				$sql = self::format($sql, $arg);
+				  $sql = self::format($sql, $arg);
 			} elseif ($arg === 'SILENT') {
 				$silent = true;
 
@@ -132,7 +132,7 @@ class discuz_database {
 			}
 		}
 		self::checkquery($sql);
-
+ 
 		$ret = self::$db->query($sql, $silent, $unbuffered);
 		if (!$unbuffered && $ret) {
 			$cmd = trim(strtoupper(substr($sql, 0, strpos($sql, ' '))));
@@ -141,7 +141,7 @@ class discuz_database {
 			} elseif ($cmd === 'UPDATE' || $cmd === 'DELETE') {
 				$ret = self::$db->affected_rows();
 			} elseif ($cmd === 'INSERT') {
-				$ret = self::$db->insert_id();
+				  $ret = self::$db->insert_id();
 			}
 		}
 		return $ret;

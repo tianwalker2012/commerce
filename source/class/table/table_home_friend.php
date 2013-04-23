@@ -142,6 +142,19 @@ class table_home_friend extends discuz_table
 			   }
 			return $uid;
 		   }
+		   //获取所有我的好友uid
+    public function frienduid($uid){
+    	if($uid)
+    	{
+    		$fuid=array();
+		 $uids = DB::fetch_all('select fuid from %t WHERE uid=%s', array($this->_table, $uid));
+	    	foreach ($uids as $k=>$v)
+	    	{
+	    	    array_push($fuid, $v['fuid']);
+	    	}
+    	}
+    	return $fuid;
+    }
 	
 	
 }

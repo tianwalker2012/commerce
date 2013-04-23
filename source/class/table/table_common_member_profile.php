@@ -95,6 +95,31 @@ class table_common_member_profile extends discuz_table_archive
 		}
 		return $birthlist;
 	}
+	
+	public function updateinfo($infomation)
+	{
+		if($infomation){
+			$sql='update '.DB::table('common_member_profile').' set ';
+			$sql.=" mobile= '".$infomation['mobile'];
+			$sql.="', realname= '".$infomation['realname'];
+			//$sql.="', location ='".$infomation['location'];
+			$sql.="', company ='".$infomation['company'];
+			$sql.="', occupation ='".$infomation['industry'];
+		    $sql.="', gender ='".$infomation['gender'];
+		    $sql.="' where uid = '".$infomation['uid']."'";
+			$result=DB::query($sql);
+			if($result)
+			{
+				return true;
+			}
+			else
+			{
+			 return false;
+			}
+			
+		}
+	} 
+	
 }
 
 ?>

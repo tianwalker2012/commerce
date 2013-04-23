@@ -7,7 +7,7 @@ require_once "./source/class/class_core.php";
 
 $discuz = C::app();
 //定义各个模块和缓存
-$mobilelist = array('login','userdetail','sendmsg', 'addtoken', 'profiledetail', 'profilesearch', 'friendlist', 'friendadd', 'deletefriend','forumpost','forumreply','singlepost','postlist','postone');
+$mobilelist = array('login','userdetail','queryfriend','token','register','createpost','profilesearch','userupdate','sendmsg', 'addtoken', 'profiledetail', 'profilesearch', 'friendlist', 'friendadd', 'deletefriend','forumpost','forumreply','singlepost','postlist','postone');
 $discuz->cachelist = $mobilelist;
 $discuz->init();
 
@@ -29,7 +29,7 @@ if(empty($_GET['mod']) || !in_array($_GET['mod'], $mobilelist)) $_GET['mod'] = '
  
 define('CURMODULE', $_GET['mod']);
 runhooks();
-
+loaducenter();
  
   
 require DISCUZ_ROOT.'./source/module/mobile/mobile_'.$_GET['mod'].'.php';

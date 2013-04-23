@@ -888,6 +888,10 @@ class table_forum_post extends discuz_table
 		}
 		return $tablename;
 	}
+	public function count_post()
+	{
+		return DB::fetch_all("select count(*) as num from pre_forum_post");
+	}
 
 }
 ?>
