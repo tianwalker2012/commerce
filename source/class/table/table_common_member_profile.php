@@ -120,6 +120,10 @@ class table_common_member_profile extends discuz_table_archive
 		}
 	} 
 	
+	public  function get_property($property,$uid)
+	{
+		return DB::fetch_all("select $property from ".DB::table('common_member_profile'). " where uid= ".$uid);
+	}
 }
 
 ?>

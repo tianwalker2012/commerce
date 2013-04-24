@@ -198,7 +198,7 @@ class table_common_member extends discuz_table_archive
 	}
 
 	
-	function check_login($username, $password) {
+	public function check_login($username, $password) {
 		$data=DB::fetch_first('SELECT salt,username,password FROM '.DB::table('ucenter_members'));
 		if($data)
 		{
@@ -219,6 +219,22 @@ class table_common_member extends discuz_table_archive
 		}
 	}
 	
+	public function querymysqfriend($uid)
+	{
+		$groupfriendlist=array();
+		$friendlist=c::t('home_friend')->frienduid($uid);
+		$grouplist=c::t('forum_groupuser')->fetch_all_fid_by_uids($uid);
+		foreach ($grouplist as $k=>$v){
+		$g_list=c::t('forum_groupuser')->groupuserlist($v);
+			 
+		}
+		foreach ($g_list as $k=>$v)
+		{
+			array_push($groupfriendlist, $v['uid']);
+		}
+		 
+		return $friendlist=array_merge($friendlist,$groupfriendlist);
+	}
 	
 	
 	public function fetch_uid_by_user_id($uid, $fetch_archive = 0) {

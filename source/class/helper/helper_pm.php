@@ -15,6 +15,7 @@ class helper_pm {
 
 
 	public static function sendpm($toid, $subject, $message, $fromid = '', $replypmid = 0, $isusername = 0, $type = 0) {
+ 
 		global $_G;
 		if($fromid === '') {
 			$fromid = $_G['uid'];
@@ -38,6 +39,7 @@ class helper_pm {
 
 		loaducenter();
 		$return = uc_pm_send($fromid, $toid, addslashes($subject), addslashes($message), 1, $replypmid, $isusername, $type);
+		 
 		if($return > 0 && $fromid) {
 			if($_G['setting']['cloud_status']) {
 				$msgService = Cloud::loadClass('Cloud_Service_Client_Message');

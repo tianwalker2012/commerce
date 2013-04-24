@@ -204,6 +204,20 @@ class table_forum_thread extends discuz_table
 		return $data;
 	}
 
+	public function fetch_all_first_by_authorid($uids,$start,$limit){
+		if($uids){
+			  $uids=implode(',', $uids);
+			$sql="select t.subject,t.tid,t.dateline,p.message,t.author,p.tid,t.maxposition,t.attachment,p.attachment,l.mapx,l.mapy ";
+			$sql.=" from pre_forum_thread t inner join pre_forum_post p ";
+			$sql.=" on t.tid=p.tid ";
+			$sql.=" left join pre_forum_post_location l on t.tid=l.tid ";
+			$sql.="where t.authorid in  ( $uids  )";
+			 $sql.="order by t.dateline desc  limit $start,$limit ";
+	    return	DB::fetch_all($sql);
+		}
+	}
+	
+	
 	public function fetch_all_by_tid_fid_displayorder($tids, $fids = null, $displayorder = null, $order = 'dateline', $start = 0, $limit = 0, $glue = '>=', $sort = 'DESC', $tableid = 0) {
 		$parameter = array($this->get_table_name($tableid));
 		$wherearr = array();

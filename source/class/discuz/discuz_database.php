@@ -95,7 +95,6 @@ class discuz_database {
 	}
 
 	public static function fetch_all($sql, $arg = array(), $keyfield = '', $silent=false) {
- 
 		$data = array();
 		$query = self::query($sql, $arg, $silent, false);
 		while ($row = self::$db->fetch_array($query)) {
@@ -104,8 +103,9 @@ class discuz_database {
 			} else {
 				$data[] = $row;
 			}
-		}
+		} 
 		self::$db->free_result($query);
+		
 		return $data;
 	}
 
@@ -130,7 +130,7 @@ class discuz_database {
 			} elseif ($arg === 'UNBUFFERED') {
 				$unbuffered = true;
 			}
-		}
+		} 
 		self::checkquery($sql);
  
 		$ret = self::$db->query($sql, $silent, $unbuffered);

@@ -70,6 +70,21 @@ class table_forum_forum extends discuz_table
 		$ordersql = empty($alltypeorder) ? 'f.type, ' : "f.type<>'group', ";
 		return DB::fetch_all("SELECT f.fid, f.type, f.status, f.name, f.fup, f.displayorder, f.forumcolumns, f.inheritedmod, ff.moderators, ff.password, ff.redirect, ff.groupnum FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff USING(fid) WHERE f.status='3' AND f.type IN('group', 'forum') ORDER BY $ordersql f.displayorder");
 	}
+	/*fetch all group */
+	public function fetch_all_fup($grouplist,$start,$limit) {
+		 
+		 return DB::fetch_all("SELECT fid from ".DB::table($this->_table)."   WHERE  status='3' AND  type='group' AND fid in ( $grouplist ) ");
+		 
+	}
+	public function fetch_all_grouptype($alltypeorder = 0,$start,$limit) {
+		$ordersql = empty($alltypeorder) ? 'f.type, ' : "f.type<>'group', ";
+		return DB::fetch_all("SELECT f.fid, f.type, f.status, f.name, f.fup, f.displayorder, f.forumcolumns, f.inheritedmod, ff.moderators, ff.password, ff.redirect, ff.groupnum FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff USING(fid) WHERE f.status='3' AND f.type IN('group', 'forum') ORDER BY $ordersql f.displayorder limit $start,$limit ");
+	}
+	public function fetch_like_name($infor)
+	{
+  	return DB::fetch_all("SELECT * from pre_forum_forum where name='%".$infor."%' ");
+	}
+	/**/
 	public function fetch_all_recommend_by_fid($fid) {
 		return DB::fetch_all("SELECT ff.*, f.* FROM %t f LEFT JOIN %t ff ON ff.fid=f.fid WHERE f.recommend=%d", array($this->_table, 'forum_forumfield', $fid));
 	}

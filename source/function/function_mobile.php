@@ -1,5 +1,5 @@
 <?php
-function common_simplepush($deviceToken,$message,$sender_id,$id,$group_id=null)
+function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 {
 	$passphrase = 'tian@walk2';
 	$ctx = stream_context_create();
@@ -65,6 +65,57 @@ function common_simplepush($deviceToken,$message,$sender_id,$id,$group_id=null)
 		}
 		
  }
+ 
+	   function get_array_inner($inner)
+	 {
+	 	$result=array();
+	 	foreach ($inner as $k=>$v){
+	 		$result[]=$v[0];
+	 	}
+	 	return $result;
+	 }
+	 
+	 
+	 function ArrMax($data,$arrkey){
+		$tree = array();
+		foreach ($data as $key=>$val)
+		{
+		$pro[]=$val[$arrkey];
+		}
+		array_multisort($pro,SORT_DESC);
+		for($j=0;$j<count($pro);$j++){
+		for($i=0;$i<count($data);$i++)
+		{
+		if($pro[$j]==$data[$i][$arrkey]){
+		$tree[$j] = $data[$i];
+		}
+		}
+		}
+		return $tree;
+	 }
+	 function start_limit($date,$start,$limit)
+	 {
+	 	$result=array();
+	 	for ($i=$start;$i<=$limit;$i++){
+		 		foreach ($date as $k=>$v)
+		 		{
+		 			$result[]=$date[$i];
+		 		}
+	 	}
+	 	return $result;
+	 }
 
+	 
+	 function get_proprety_uid($proprety,$uid)
+	 {
+	 	return c::t('common_member_profile')->get_property($proprety,$uid);
+	 }
+	 
+	 function get_member_list($plid)
+	 {
+	 	$authorid=DB::fetch_all("select authorid from pre_ucenter_pm_lists where plid=".$plid);
+	 	return uc_pm_chatpmmemberlist($authorid[0]['authorid'],$plid);
+	 	
+	 }
 
 ?>

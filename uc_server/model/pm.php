@@ -183,6 +183,7 @@ class pmmodel {
 	}
 
 	function sendpm($fromuid, $fromusername, $touids, $subject, $message, $type = 0) {
+		 
 		if(!$fromuid || !$fromusername || !$touids || !$message) {
 			return 0;
 		}

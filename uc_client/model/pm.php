@@ -183,6 +183,7 @@ class pmmodel {
 	}
 
 	function sendpm($fromuid, $fromusername, $touids, $subject, $message, $type = 0) {
+		 
 		if(!$fromuid || !$fromusername || !$touids || !$message) {
 			return 0;
 		}
@@ -811,6 +812,7 @@ class pmmodel {
 				$data['new'] = $data['isnew'];
 
 				$data['msgtoid'] = $data['touid'];
+				 
 				if($data['lastdateline'] >= $today) {
 					$daterange = 1;
 				} elseif($data['lastdateline'] >= $today - 86400) {

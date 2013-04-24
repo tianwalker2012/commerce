@@ -7,17 +7,17 @@ require_once "./source/class/class_core.php";
 
 $discuz = C::app();
 //定义各个模块和缓存
-$mobilelist = array('login','userdetail','queryfriend','token','register','createpost','profilesearch','userupdate','sendmsg', 'addtoken', 'profiledetail', 'profilesearch', 'friendlist', 'friendadd', 'deletefriend','forumpost','forumreply','singlepost','postlist','postone');
+$mobilelist = array('login','userdetail','queryfriend','token','dynamics','persondynamics',
+                    'messagesession','messagecreate','querychatgroup','querychat','messagegroupcreate',
+                    'groupadd','groupremove','checkincycle','changegroupname',
+                    'queryallcycle','querymycycle','querycycleuser','cycleadd','info','quit',
+                     'register','createpost','profilesearch','userupdate','sendmsg', 'addtoken', 'profiledetail', 'profilesearch', 'friendlist', 'friendadd', 'deletefriend','forumpost','forumreply','singlepost','postlist','postone');
 $discuz->cachelist = $mobilelist;
 $discuz->init();
 
 require DISCUZ_ROOT.'./source/function/function_forum.php';
-
 require DISCUZ_ROOT.'./source/function/function_mobile.php';  
- 
 require DISCUZ_ROOT.'./source/function/function_friend.php';
-
-
 require DISCUZ_ROOT.'./uc_server/model/friend.php';
 
 

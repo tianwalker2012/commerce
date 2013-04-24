@@ -1,6 +1,7 @@
 <?php
- echo "<pre>";
 $uid=$_GET['uid'];
+$start=$_GET['start'];
+$limit=$_GET['limit'];
 $p_list=array();
 $user=array();
 $groupfriendlist=array();
@@ -11,18 +12,22 @@ $g_list=c::t('forum_groupuser')->groupuserlist($v);
 	 
 }
 foreach ($g_list as $k=>$v)
-	{
-		array_push($groupfriendlist, $v['uid']);
-	}
+{
+	array_push($groupfriendlist, $v['uid']);
+}
 $friendlist=array_merge($friendlist,$groupfriendlist);
 foreach ($friendlist as $k=>$v){
 	$user_inf=get_user_info($v);
 	$user[]=array($user_inf);
 }
-foreach ($user as $k=>$v)
+/*foreach ($user as $k=>$v)
 {
 	$p_list[]=$v[0];
 }
+$useridinf=array();
+ for ($i=$start;$start<$limit;$i++){
+ 	$useridinf[]=$p_list[$i];
+ }*/
  if($user)
 {
  echo json_encode($back=array('result'=>'success',

@@ -3,7 +3,6 @@
 $username=$_GET['username'];
 $pwd=$_GET['password'];
 $profile=c::t('common_member')->check_login($username,$pwd);
- 
 $profiledetail=c::t('common_member_profile')->fetch_all($profile['uid']);
 $num=c::t('home_friend')->friendnum($profile['uid']);
 $postnum=c::t('forum_post')->postnum($profile['uid']);
