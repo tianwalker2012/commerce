@@ -53,7 +53,7 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 			            'longitude'=>$profiledetail[0]['longitude'],
 			            'bio'=>$profiledetail[0]['bio'],
 			            'company'=>$profiledetail[0]['company'],
-			            'industry'=>$profiledetail[0]['industry'],
+			            'industry'=>$profiledetail[0]['occupation'],
 			            'gender'=>$profiledetail[0]['gender'],
 			            'friendnum'=>$num[0]['num'],
 			            'postnum'=>$postnum[0]['num'],

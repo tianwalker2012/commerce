@@ -197,7 +197,7 @@ class table_common_member extends discuz_table_archive
 		return $users;
 	}
 
-	
+	/*一下*/
 	public function check_login($username, $password) {
 		$data=DB::fetch_first('SELECT salt,username,password FROM '.DB::table('ucenter_members'));
 		if($data)
@@ -254,10 +254,20 @@ class table_common_member extends discuz_table_archive
     } 
 	
 	
+	public function fetch_mysql_friend($frienduid,$start,$limit)
+	{
+		$sql="select m.uid,m.email,m.username,";
+		$sql.=" p.mobile,p.position,p.resideprovince,";
+		$sql.=" p.latitude,p.longitude,p.bio,p.company,";
+		$sql.=" p.occupation,p.gender,c.friends,c.posts ";
+		$sql.=" from pre_common_member m  inner join pre_common_member_profile p ";
+		$sql.=" on m.uid=p.uid left join pre_common_member_count c  on m.uid=c.uid ";
+		$sql.=" where m.uid in ( $frienduid ) order  by m.regdate desc limit $start,$limit";
+		return DB::fetch_all($sql);
+	}
 	
 	
-	
-	
+	/*以上*/
 	public function count_by_email($email, $fetch_archive = 0) {
 		$count = 0;
 		if($email) {

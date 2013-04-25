@@ -82,7 +82,7 @@ class table_forum_forum extends discuz_table
 	}
 	public function fetch_like_name($infor)
 	{
-  	return DB::fetch_all("SELECT * from pre_forum_forum where name='%".$infor."%' ");
+  	return DB::fetch_all("SELECT * from pre_forum_forum where name like '%".$infor."%' ");
 	}
 	/**/
 	public function fetch_all_recommend_by_fid($fid) {

@@ -16,24 +16,19 @@ foreach ($g_list as $k=>$v)
 	array_push($groupfriendlist, $v['uid']);
 }
 $friendlist=array_merge($friendlist,$groupfriendlist);
-foreach ($friendlist as $k=>$v){
-	$user_inf=get_user_info($v);
-	$user[]=array($user_inf);
-}
-/*foreach ($user as $k=>$v)
+
+$frienduid=implode(',', $friendlist);
+$result=c::t('common_member')->fetch_mysql_friend($frienduid,$start,$limit);
+ 
+
+
+
+ if($result)
 {
-	$p_list[]=$v[0];
-}
-$useridinf=array();
- for ($i=$start;$start<$limit;$i++){
- 	$useridinf[]=$p_list[$i];
- }*/
- if($user)
-{
- echo json_encode($back=array('result'=>'success',
-			                      'data'=>$p_list));
+ echo json_encode($back=array('result'=>'200',
+			                      'data'=>$result));
 }
 else
  { 
- 	echo  json_encode($back=array('result'=>'没有联系人'));
+ 	echo  json_encode($back=array('result'=>'400'));
  }
