@@ -124,6 +124,16 @@ class table_common_member_profile extends discuz_table_archive
 	{
 		return DB::fetch_all("select $property from ".DB::table('common_member_profile'). " where uid= ".$uid);
 	}
+	
+	
+    function updatetoken($uid,$token)
+	{
+		 
+		 return $data = DB::query('UPDATE '.DB::table($this->_table)." SET token= '"."".$token.""."' WHERE uid =".$uid);
+		
+	}
+	
+	
 }
 
 ?>
