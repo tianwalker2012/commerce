@@ -8,7 +8,7 @@ $subject=$_GET['subject'];
 $message=$_GET['message'];
 $longitude=$_GET['longitude'];
 $latitude=$_GET['latitude'];
-$tid=$_GET['$reply'];
+$tid=$_GET['reply'];
 $location=$_GET['location'];
 $first=0;
 if(empty($tid)){
