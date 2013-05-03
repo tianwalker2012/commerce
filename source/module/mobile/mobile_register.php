@@ -1,17 +1,15 @@
 <?php
-/*
-$username=$_POST['username'];
-$password=$_POST['password'];
-$email=$_POST['email'];
-$newusername="1ssts23hcc";
- $newpassword="45t6cc";
- $newemail="56stss8193hcccc5@qq.com";
 
-  
-*/
-$newusername = trim($_GET['newusername']);
-$newpassword = trim($_GET['newpassword']);
-$newemail = strtolower(trim($_GET['newemail']));
+ 
+/*$newusername="yabin123yabin";
+ $newpassword="a";
+ $newemail="1263418541094@qq.com";*/ 
+
+
+
+  $newusername = trim($_GET['username']);
+  $newpassword = trim($_GET['password']);
+  $newemail = strtolower(trim($_GET['email']));
 if(!$newusername || !isset($_GET['confirmed']) && !$newpassword || !isset($_GET['confirmed']) && !$newemail) {
 	cpmsg('members_add_invalid', '', 'error');
 }
@@ -20,9 +18,8 @@ if(C::t('common_member')->fetch_uid_by_username($newusername) || C::t('common_me
 	cpmsg('members_add_username_duplicate', '', 'error');
 }
 
-  
 
- $uid = uc_user_register(addslashes($newusername), $newpassword, $newemail);
+     $uid = uc_user_register(addslashes($newusername), $newpassword, $newemail);
 if($uid <= 0) {
 	if($uid == -1) {
 		cpmsg('members_add_illegal', '', 'error');

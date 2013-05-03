@@ -20,7 +20,6 @@ require DISCUZ_ROOT.'./source/function/function_forum.php';
 require DISCUZ_ROOT.'./source/function/function_mobile.php';  
 require DISCUZ_ROOT.'./source/function/function_friend.php';
 require DISCUZ_ROOT.'./uc_server/model/friend.php';
-require DISCUZ_ROOT.'./uc_server/model/base.php';
 
 
 
