@@ -8,7 +8,7 @@ require_once "./source/class/class_core.php";
 $discuz = C::app();
 //定义各个模块和缓存
 $mobilelist = array('login','userdetail','queryfriend','token','dynamics','persondynamics',
-                    'uploadavatar','uploadpost',
+                    'uploadavatar','uploadpost','addfriend',
                     'messagesession','messagecreate','querychatgroup','querychat','messagegroupcreate',
                     'groupadd','groupremove','checkincycle','changegroupname',
                     'queryallcycle','querymycycle','querycycleuser','cycleadd','searchcycle','quit',
