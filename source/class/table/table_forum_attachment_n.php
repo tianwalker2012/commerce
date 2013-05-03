@@ -143,6 +143,18 @@ class table_forum_attachment_n extends discuz_table
 		}
 		return $attachsize;
 	}
+	
+   public function addaction($data)
+	  {
+	     $data['attachment'];
+	     $sql="insert into pre_forum_attachment(tid,pid,uid,tableid) values  (".$data['tid'].",".$data['pid'].",".$data['uid'].",".$data['tableid'].")  ";
+	  	 DB::fetch_all($sql);
+	     $aid=DB::insert_id();
+	     $data['tids']=$data['tid']%10;
+	     $sql1="insert into pre_forum_attachment_".$data['tids']."  (aid,tid,pid,uid,dateline,filename,filesize,attachment) values(".$aid.",".$data['tid'].",".$data['pid'].",".$data['uid'].",".time().",'".$data['filename']."',".$data['fsize'].",'".$data['attachment']."' ) ";
+	     DB::fetch_all($sql1);
+	     return $aid;
+	  }
 
 }
 
