@@ -1,11 +1,11 @@
 <?php
 
- 
-/*$newusername="yabin123yabin";
+/* 
+$newusername="ysabin123yabin";
  $newpassword="a";
- $newemail="1263418541094@qq.com";*/ 
+ $newemail="1263s418541094@qq.com";
 
-
+*/ 
 
   $newusername = trim($_GET['username']);
   $newpassword = trim($_GET['password']);
@@ -72,11 +72,10 @@ if($_GET['emailnotify']) {
   $user_inf=get_user_info($uid);
  if($uid)
 {
- echo json_encode($back=array('result'=>'success',
-			                      'data'=>$user_inf));
+ echo json_encode($user_inf);
 }
 else
  { 
- 	echo  json_encode($back=array('result'=>$uid));
+ 	header('HTTP/1.1 error 406' );
  }
   
