@@ -1,5 +1,5 @@
 <?php
-
+/*1212121212*/
 $uid=$_GET['uid'];
 
 $friendid=$_GET['friendid'];
