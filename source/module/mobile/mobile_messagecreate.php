@@ -1,22 +1,16 @@
 <?php
- 
-/*
-   $toid= '1' ;
-   $subject='subject';
-   $message='你才SB';
-   $from='2' ;
-   $replay='91';*/
 $toid=$_GET['to'];
 $subject=$_GET['subject'];
 $message=$_GET['message'];
 $from=$_GET['from'];
-$replay=$_GET['replay'];
-   if(isset($replay)&&!empty($replay))
+$plid=$_GET['plid']; 
+$type=$_GET['type'];
+   if(isset($plid)&&!empty($plid))
    {
-   	$msg_id=sendpm($toid, $subject, $message,$from,$replay);
+   	$msg_id=sendpm($toid, $subject, $message,$from,$plid);
    }
    else {
    $msg_id=sendpm($toid, $subject, $message,$from);
    }
- echo json_encode($msg_id);
+ echo json_encode(array('pmid'=>$msg_id));
  ?>
