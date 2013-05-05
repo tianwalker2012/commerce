@@ -33,16 +33,16 @@ $lastpm=array();
 			$lastpms['lastauthor'] = $lastmessage['firstauthor'];
 			$lastpms['lastsummary'] = $lastmessage['firstsummary'];
 		}
-	   $from=$lastpms['lastauthorid'];
+	   $author=$lastpms['lastauthorid'];
 		$to="";
 	    $v['min_max']."<br>";
 		if($v['min_max']){
 	    $minmax=explode('_', $v['min_max']);
-		$to=array_diff($minmax,array($from));
+		$to=array_diff($minmax,array($author));
 		$to=array_values($to);
 		  $to=$to[0];
 		}
-		$lastpm[$k]['from']=$from;
+		$lastpm[$k]['from']=$author;
 	    $lastpm[$k]['to']=$to;
 	 	 
 	 	unset($lastpm[$k]['lastmessage']);
