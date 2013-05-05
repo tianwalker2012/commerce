@@ -8,10 +8,7 @@ $num=c::t('home_friend')->friendnum($profile['uid']);
 $postnum=c::t('forum_post')->postnum($profile['uid']);
 if($profile)
 {
-	if($profile['avatarstatus'])
-	{
-		  $profile['avatarstatus']=discuz_uc_avatar($profile['uid'],'small',true);
-	}
+	$profile['avatarstatus']="http://www.enjoyxue.com/commerce/uc_server/avatar.php?uid=".$profile['uid']."&size=small";
 	$back=array('uid'=>$profile['uid'],
 		        'email'=>$profile['email'],	 
 		        'username'=>$profile['username'],	 
