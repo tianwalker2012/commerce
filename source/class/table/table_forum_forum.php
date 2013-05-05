@@ -71,15 +71,27 @@ class table_forum_forum extends discuz_table
 		return DB::fetch_all("SELECT f.fid, f.type, f.status, f.name, f.fup, f.displayorder, f.forumcolumns, f.inheritedmod, ff.moderators, ff.password, ff.redirect, ff.groupnum FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff USING(fid) WHERE f.status='3' AND f.type IN('group', 'forum') ORDER BY $ordersql f.displayorder");
 	}
 	/*fetch all group */
-	public function fetch_all_fup($grouplist,$start,$limit) {
-		 
-		 return DB::fetch_all("SELECT fid from ".DB::table($this->_table)."   WHERE  status='3' AND  type='group' AND fid in ( $grouplist ) ");
+	public function fetch_all_fup($grouplist) {
+		 return DB::fetch_all("SELECT fid from ".DB::table($this->_table)."   WHERE  status='3'  AND fup in ( $grouplist ) ");
 		 
 	}
-	public function fetch_all_grouptype($alltypeorder = 0,$start,$limit) {
-		$ordersql = empty($alltypeorder) ? 'f.type, ' : "f.type<>'group', ";
-		return DB::fetch_all("SELECT f.fid, f.type, f.status, f.name, f.fup, f.displayorder, f.forumcolumns, f.inheritedmod, ff.moderators, ff.password, ff.redirect, ff.groupnum FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff USING(fid) WHERE f.status='3' AND f.type IN('group', 'forum') ORDER BY $ordersql f.displayorder limit $start,$limit ");
+	public function fetch_all_grouptype($start,$limit) {
+		$sql ="SELECT f.fid,f.name,ff.description,ff.founderuid,ff.foundername,ff.rank, ff.category,ff.dateline,ff.membernum,ff.foundername,ff.description,ff.activity   ";
+		// $sql.=" , ( select count(*) from pre_forum_thread  )   dynamic_count ";
+		$sql.="FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff  on f.fid=ff.fid WHERE f.status='3' AND ( f.fid ='45' or f.fup=45 ) ";
+		$sql.="ORDER BY   ff.dateline desc limit $start,$limit ";
+		return DB::fetch_all($sql);
 	}
+	
+	public function fetch_all_groupmytype($grouplist,$start,$limit) {
+		$sql ="SELECT f.fid,f.name,ff.description,ff.founderuid,ff.foundername,ff.rank, ff.category,ff.dateline,ff.membernum,ff.foundername,ff.description,ff.activity   ";
+		// $sql.=" , ( select count(*) from pre_forum_thread  )   dynamic_count ";
+		$sql.="FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff  on f.fid=ff.fid WHERE f.status='3' AND f.fid in ( $grouplist ) ";
+	    $sql.="ORDER BY   ff.dateline desc limit $start,$limit ";
+		return DB::fetch_all($sql);
+	}
+	
+	
 	public function fetch_like_name($infor)
 	{
   	return DB::fetch_all("SELECT * from pre_forum_forum where name like '%".$infor."%' ");

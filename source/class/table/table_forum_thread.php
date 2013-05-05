@@ -206,13 +206,13 @@ class table_forum_thread extends discuz_table
 
 	public function fetch_all_first_by_authorid($uids,$start,$limit){
 		if($uids){
-			  $uids=implode(',', $uids);
-			$sql="select t.subject,t.tid,t.dateline,p.message,t.author,p.tid,t.maxposition,t.attachment,p.attachment,l.mapx,l.mapy ";
+			 $uids=implode(',', $uids);
+			$sql="select p.pid,p.authorid,p.subject,p.message,p.dateline,p.tid replayto,t.tid firstid,t.author,p.tid,p.attachment,l.mapx,l.mapy ";
 			$sql.=" from pre_forum_thread t inner join pre_forum_post p ";
 			$sql.=" on t.tid=p.tid ";
 			$sql.=" left join pre_forum_post_location l on t.tid=l.tid ";
 			$sql.="where t.authorid in  ( $uids  )";
-			 $sql.="order by t.dateline desc  limit $start,$limit ";
+			$sql.="order by t.dateline desc  limit $start,$limit ";
 	    return	DB::fetch_all($sql);
 		}
 	}

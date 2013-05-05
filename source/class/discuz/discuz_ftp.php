@@ -71,6 +71,7 @@ class discuz_ftp
 		$old_dir = $this->ftp_pwd();
 		$dirname = dirname($target);
 		$filename = basename($target);
+		file_put_contents("d:/sssxxx.log", $dirname."-------".$filename,FILE_APPEND);
 		if(!$this->ftp_chdir($dirname)) {
 			if($this->ftp_mkdir($dirname)) {
 				$this->ftp_chmod($dirname);
