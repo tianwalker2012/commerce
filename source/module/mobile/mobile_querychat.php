@@ -17,13 +17,16 @@ $result=DB::fetch_all($sql);
  
 if($result)
 {
-  $plid=$result[0]['plid'];
+$plid=$result[0]['plid'];
 $lastint=$plid % 10;
-$sql="select * from pre_ucenter_pm_messages_$lastint order by dateline desc limit $start,$limit ";
+$sql="select pmid,plid,authorid ,message,dateline from pre_ucenter_pm_messages_$lastint order by dateline desc limit $start,$limit ";
 $result=DB::fetch_all($sql);
-echo json_encode($result);
+foreach ($result as $k=>$v){
+	$result[$k]['to']=$v['authorid']==$p1?$p2:$p1;
+}
+echo json_encode(array('total_count'=>count($result),'data'=>$result));
 }
 else 
 {
-echo "200";
+echo   json_encode(array('total_count'=>0));
 }

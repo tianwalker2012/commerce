@@ -68,8 +68,8 @@ if(!empty($latitude)&&!empty($location)){
 				'pid' => $result[0]['num'],
 				'tid' => $tid,
 				'uid' => $authorid,
-				'mapx' => $latitude,
-				'mapy' => $longitude,
+				'mapx' => $longitude,
+				'mapy' => $latitude,
 				'location' => $location,
 			));
 }

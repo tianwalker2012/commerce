@@ -5,4 +5,5 @@ $to=implode(',', $persons);
 $authorid=DB::fetch_all("select authorid from pre_ucenter_pm_lists where plid=".$plid);
 uc_pm_kickchatpm($plid, $authorid[0]['authorid'], $to);
 $list=get_member_list($plid);
-echo json_encode($list);
+ $data=get_member($list,$plid);
+ echo json_encode($data);
