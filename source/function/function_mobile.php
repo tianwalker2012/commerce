@@ -27,7 +27,7 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 
 
  function get_user_info($uid)
- {      
+ {   
  	    $back=array();
 		$profile=c::t('common_member')->fetch_uid_by_user_id($uid);
 		$profiledetail=c::t('common_member_profile')->fetch_all($uid);
@@ -35,29 +35,23 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 		$postnum=c::t('forum_post')->postnum($uid);
 		if($profile)
 		{
-			if($profile[0]['avatarstatus'])
-			{
-				  $profile['avatarstatus']=discuz_uc_avatar($uid,'small',true);
-			} else 
-			{
-				$profile['avatarstatus']=null;
-			}
-			$back=array('uid'=>$profile[0]['uid'],
-				        'email'=>$profile[0]['email'],	 
-				        'username'=>$profile[0]['username'],	 
-				        'avatar'=>$profile['avatarstatus'],
-			            'mobilephone'=>$profiledetail[0]['mobile'],
-			            'postion'=>$profiledetail[0]['postion'],
-			            'location'=>$profiledetail[0]['resideprovince'].$profiledetail[0]['residecity'].$profiledetail[0]['residedist'].$profiledetail[0]['residecommunity'].$profiledetail[0]['residesuite'],	 
-		                'latitude'=>$profiledetail[0]['latitude'],
-			            'longitude'=>$profiledetail[0]['longitude'],
-			            'bio'=>$profiledetail[0]['bio'],
-			            'company'=>$profiledetail[0]['company'],
-			            'industry'=>$profiledetail[0]['occupation'],
-			            'gender'=>$profiledetail[0]['gender'],
-			            'friendnum'=>$num[0]['num'],
-			            'postnum'=>$postnum[0]['num'],
-			);
+	 	$profile['avatarstatus']=$profile['avatarstatus']="http://www.enjoyxue.com/commerce/uc_server/avatar.php?uid=".$profile['uid']."&size=small";
+		$back=array('uid'=>$profile[0]['uid'],
+			        'email'=>$profile[0]['email'],	 
+			        'username'=>$profile[0]['username'],	 
+			        'avatar'=>$profile['avatarstatus'],
+		            'mobilephone'=>$profiledetail[1]['mobile'],
+		            'postion'=>$profiledetail[1]['postion'],
+		            'location'=>$profiledetail[1]['resideprovince'].$profiledetail[1]['residecity'].$profiledetail[1]['residedist'].$profiledetail[1]['residecommunity'].$profiledetail[1]['residesuite'],	 
+	                'latitude'=>$profiledetail[1]['latitude'],
+		            'longitude'=>$profiledetail[1]['longitude'],
+		            'bio'=>$profiledetail[1]['bio'],
+		            'company'=>$profiledetail[1]['company'],
+		            'industry'=>$profiledetail[1]['occupation'],
+		            'gender'=>$profiledetail[1]['gender'],
+		            'friendnum'=>$num[1]['num'],
+		            'postnum'=>$postnum[1]['num'],
+		);
 			 return $back;
 		}else 
 		{
@@ -117,5 +111,18 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	return uc_pm_chatpmmemberlist($authorid[0]['authorid'],$plid);
 	 	
 	 }
+	 
+	 
+	 
+	 function get_member($list,$plid)
+	 {
+	 	$name=DB::fetch_all("select subject from pre_ucenter_pm_lists where plid=".$plid);
+        return $data=array('author'=>$list['author'],'name'=>$name[0]['subject'],'persons'=>$list['member']);
+  
+	 }
+	 
+	 
+	 
+	 
 
 ?>
