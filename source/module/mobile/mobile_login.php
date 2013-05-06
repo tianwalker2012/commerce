@@ -1,6 +1,10 @@
 <?php
-$email=$_GET['email'];
-$pwd=$_GET['password'];
+ $email=$_GET['email'];
+$pwd=$_GET['password']; 
+
+
+
+
 $profile=c::t('common_member')->check_login($email,$pwd);
 $profiledetail=c::t('common_member_profile')->fetch_all($profile['uid']);
 $num=c::t('home_friend')->friendnum($profile['uid']);
@@ -29,7 +33,7 @@ if($profile)
 }
 else
  { 
- 	echo json_encode(array('200'));
+ 	echo json_encode(array('500'));
  }
  
 ?>

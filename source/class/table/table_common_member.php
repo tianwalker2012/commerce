@@ -198,14 +198,14 @@ class table_common_member extends discuz_table_archive
 	}
 
 	/*一下*/
-	public function check_login($email, $password) {
+	public function check_login($email, $password) { 
 	    $sql="SELECT salt,username,password,email FROM pre_ucenter_members where email='".$email."'";
 		$data=DB::fetch_all($sql);
 		if($data)
 		{
-			if(md5(md5($password).$data['salt'])==$data['password'])
+			if(md5(md5($password).$data[0]['salt'])==$data[0]['password'])
 			{
-				$data=$this->fetch_by_username($username);
+				$data=$this->fetch_by_username($data[0]['username']);
 				return $data;
 			}
 			else
