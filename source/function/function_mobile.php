@@ -121,7 +121,12 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	foreach ($list['member'] as $k=>$v){
 	 		array_push($persons, $v);
 	 	}
-        return $data=array('author'=>$list['author'],'name'=>$name[0]['subject'],'persons'=>$persons);
+	 	if(!empty($persons)){
+          $data=array('author'=>$list['author'],'name'=>$name[0]['subject'],'persons'=>$persons);
+	 	}else{
+	 	 $data=array('total_count'=>0);
+	 	}
+	 	return $data;
 	 }
 	 
 	 
