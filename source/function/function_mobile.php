@@ -116,9 +116,12 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 
 	 function get_member($list,$plid)
 	 {
+	 	$persons=array();
 	 	$name=DB::fetch_all("select subject from pre_ucenter_pm_lists where plid=".$plid);
-        return $data=array('author'=>$list['author'],'name'=>$name[0]['subject'],'persons'=>$list['member']);
-  
+	 	foreach ($list['member'] as $k=>$v){
+	 		array_push($persons, $v);
+	 	}
+        return $data=array('author'=>$list['author'],'name'=>$name[0]['subject'],'persons'=>$persons);
 	 }
 	 
 	 
