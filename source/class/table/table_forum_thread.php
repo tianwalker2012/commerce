@@ -207,7 +207,7 @@ class table_forum_thread extends discuz_table
 	public function fetch_all_first_by_authorid($uids,$start,$limit){
 		if($uids){
 			 $uids=implode(',', $uids);
-			$sql="select p.pid,p.authorid,p.subject,p.message,p.dateline,p.tid replayto,t.tid firstid,t.author,p.tid,p.attachment,l.mapx,l.mapy ";
+			$sql="select p.pid,p.authorid,p.subject,p.message,p.dateline,p.tid replyto,t.tid firstid,t.author,p.tid,p.attachment,l.mapx longitude,l.mapy latitude";
 			$sql.=" from pre_forum_thread t inner join pre_forum_post p ";
 			$sql.=" on t.tid=p.tid ";
 			$sql.=" left join pre_forum_post_location l on t.tid=l.tid ";
