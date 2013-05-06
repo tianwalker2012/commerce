@@ -129,6 +129,27 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	return $data;
 	 }
 	 
+	 function get_cycle_member($gid)
+	 {
+	 	 
+	 	
+	 	$sql ="select g.uid from pre_forum_groupuser g where g.fid=".$gid;
+	 	$result=DB::fetch_all($sql);
+	 	$persons=array();
+	 	foreach ($result as $k=>$v){
+	 		array_push($persons, $v['uid']);
+	 	}
+	 	$sql ="select f.fid,f.name from pre_forum_forum f  ";
+	 	$sql.=" where f.fid=".$gid;
+	 	$result=DB::fetch_all($sql);
+	 	if(!empty($result)){
+	 		$data=array('cycleid'=>$result[0]['fid'],'name'=>$result[0]['name'],'persons'=>$persons);
+	 	}else {
+	 		$data=array('total_count'=>0);
+	 	}
+      return $data;	 	
+	 }
+	 
 	 
 	 
 	 
