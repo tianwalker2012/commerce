@@ -1,18 +1,16 @@
 <?php
-   echo "<pre>";
-$username=$_GET['username'];
+$email=$_GET['email'];
 $pwd=$_GET['password'];
-$profile=c::t('common_member')->check_login($username,$pwd);
+$profile=c::t('common_member')->check_login($email,$pwd);
 $profiledetail=c::t('common_member_profile')->fetch_all($profile['uid']);
- var_dump($profile);
- exit();
 $num=c::t('home_friend')->friendnum($profile['uid']);
-$postnum=c::t('forum_post')->postnum($profile['uid']);
+$postnum=c::t('forum_post')->postnum($profile['uid']); 
+
 if($profile)
 {
 	$profile['avatarstatus']="http://www.enjoyxue.com/commerce/uc_server/avatar.php?uid=".$profile['uid']."&size=small";
 	$back=array('uid'=>$profile['uid'],
-		        'email'=>$profile['email'],	 
+		        'email'=>$email,	 
 		        'username'=>$profile['username'],	 
 		        'avatar'=>$profile['avatarstatus'],
 	            'mobilephone'=>$profiledetail[$profile['uid']]['mobile'],
