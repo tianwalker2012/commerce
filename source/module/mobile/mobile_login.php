@@ -16,7 +16,7 @@ if($profile)
 		        'avatar'=>$profile['avatarstatus'],
 	            'mobilephone'=>$profiledetail[$profile['uid']]['mobile'],
 	            'postion'=>$profiledetail[$profile['uid']]['postion'],
-	            'location'=>$profiledetail[$profile['uid']]['resideprovince'].$profiledetail['residecity'].$profiledetail['residedist'].$profiledetail['residecommunity'].$profiledetail['residesuite'],	 
+	            'location'=>$profiledetail[$profile['uid']]['resideprovince'].$profiledetail[$profile['uid']]['residecity'].$profiledetail[$profile['uid']]['residedist'].$profiledetail[$profile['uid']]['residecommunity'].$profiledetail[$profile['uid']]['residesuite'],	 
                 'latitude'=>$profiledetail[$profile['uid']]['latitude'],
 	            'longitude'=>$profiledetail[$profile['uid']]['longitude'],
 	            'bio'=>$profiledetail[$profile['uid']]['bio'],
