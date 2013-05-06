@@ -151,6 +151,42 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 }
 	 
 	 
+	 function get_attachment($v)
+	 {
+		   $singlea=array();
+	 	   if($v['attachment']==2){
+	 	 	$sql="select aid,tid,pid,tableid from pre_forum_attachment where tid=".$v['tid'];
+	 	 	$attachment=DB::fetch_all($sql);
+	 	   	foreach ($attachment as $k=>$vv){
+	 	 	 $sql ="select attachment,filename from pre_forum_attachment_".$vv['tableid'];
+	 	     $sql.=" where aid= ".$vv['aid'];
+	 	     $attachment=DB::fetch_all($sql);
+			  $singlea[]= $attachment[0];
+		 	 }
+		     }
+	       return $singlea;
+	        
+	 }
+	 
+	 function get_comment($tid)
+	 {
+	 	$reply=array();
+ 	    $sql="select p.tid,p.pid,p.authorid,p.subject,p.message,p.dateline,p.tid replyto,t.tid firstid,t.author,p.tid,p.attachment,l.mapx longitude,l.mapy latitude";
+		$sql.=" from pre_forum_thread t inner join pre_forum_post p ";
+		$sql.=" on t.tid=p.tid ";
+		$sql.=" left join pre_forum_post_location l on t.tid=l.tid ";
+		$sql.=" where p.tid=$tid and p.first=0 ";
+	      $sql.="order by t.dateline desc ";
+	    $comment=DB::fetch_all($sql);
+		foreach ($comment as $k=>$v){
+		     $attachment=get_attachment($v);
+		     $v['attachment']=$attachment;
+		     $reply[]=$v;
+	    } 
+	    return $reply;
+	 }
+	 
+	 
 	 
 	 
 
