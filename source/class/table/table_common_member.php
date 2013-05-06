@@ -200,12 +200,14 @@ class table_common_member extends discuz_table_archive
 	/*一下*/
 	public function check_login($username, $password) {
 		$data=DB::fetch_first('SELECT salt,username,password FROM '.DB::table('ucenter_members'));
+		var_dump($data);
 		if($data)
 		{
 			if(md5(md5($password).$data['salt'])==$data['password'])
 			{
 				$data=$this->fetch_by_username($username);
-				
+				echo "<hr>";
+				var_dump($data);
 				return $data;
 			}
 			else
