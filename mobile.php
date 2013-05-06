@@ -11,7 +11,7 @@ $mobilelist = array('login','userdetail','queryfriend','token','dynamics','perso
                     'uploadavatar','uploadpost','addfriendid',
                     'messagesession','messagecreate','querychatgroup','querychat','messagegroupcreate',
                     'groupadd','groupremove','checkincycle','changegroupname',
-                    'queryallcycle','querymycycle','querycycleuser','cycleadd','searchcycle','quit',
+                    'queryallcycle','querymycycle','querycycleuser','cycleadd','searchcycle','cyclequit',
                     'register','createpost','profilesearch','userupdate','sendmsg', 'addtoken', 'profiledetail', 'profilesearch', 'friendlist', 'friendadd', 'deletefriend','forumpost','forumreply','singlepost','postlist','postone');
 $discuz->cachelist = $mobilelist;
 $discuz->init();
