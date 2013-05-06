@@ -199,8 +199,8 @@ class table_common_member extends discuz_table_archive
 
 	/*一下*/
 	public function check_login($email, $password) {
-		$data=DB::fetch_first('SELECT salt,username,password,email FROM '.DB::table('ucenter_members')).' where email='.$email;
-		var_dump($data);
+		echo $sql='SELECT salt,username,password,email FROM pre_ucenter_members where email='.$email;
+		$data=DB::fetch_all($sql);
 		if($data)
 		{
 			if(md5(md5($password).$data['salt'])==$data['password'])
