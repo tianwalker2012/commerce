@@ -1,5 +1,5 @@
 <?php
-$uid=$_GET['uid'];
+ $uid=$_GET['uid'];
 $start=$_GET['start'];
 $limit=$_GET['limit'];
 $friendlist=$friendlist=c::t('home_friend')->frienduid($uid);
@@ -8,12 +8,11 @@ $result=c::t('forum_thread')->fetch_all_first_by_authorid($friendlist,$start,$li
  $post=array();
  foreach ($result as $k=>$v){
      $attachment=get_attachment($v);
-     $comment=get_comment($v['pid']);
+     $comment=get_comment($v['tid']);
      $v['attachment']=$attachment;
      $v['comment']=$comment;
      $post[]=$v;
  } 
- 
  if(!empty($post)){
  		 echo json_encode(array('total_count'=>count($post),'data'=>$post));
  }else{
