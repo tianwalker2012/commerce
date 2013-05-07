@@ -55,7 +55,11 @@ function rand_22()
 		            'dateline'=>time(),'isimage'=>$type,
 		            );
 	   $res=c::t('forum_attachment_n')->addaction($data);
-	   echo json_encode(array($res));
+	   if($res){
+	   echo json_encode(array("url"=>"www.enjoyxue.com/commerce/data/attachment/forum/.$attachment"));
+	   }else {
+	   echo json_encode(array("total_count"=>"0"));
+	   }
 	  
 	}
     }else {
