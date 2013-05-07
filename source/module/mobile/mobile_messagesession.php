@@ -42,7 +42,7 @@ $lastpm=array();
 		$to=array_values($to);
 		  $to=$to[0];
 		}
-		$lastpm[$k]['from']=$author;
+		$lastpm[$k]['author']=$author;
 	    $lastpm[$k]['to']=$to;
 	 	 
 	 	unset($lastpm[$k]['lastmessage']);

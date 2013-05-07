@@ -22,7 +22,7 @@ $lastint=$plid % 10;
 $sql="select pmid,plid,authorid author ,message,dateline from pre_ucenter_pm_messages_$lastint order by dateline desc limit $start,$limit ";
 $result=DB::fetch_all($sql);
 foreach ($result as $k=>$v){
-	$result[$k]['to']=$v['authorid']==$p1?$p2:$p1;
+	$result[$k]['to']==$v['authorid']==$p1?$p2:$p1;
 }
 echo json_encode(array('total_count'=>count($result),'data'=>$result));
 }

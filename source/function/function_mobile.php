@@ -161,8 +161,8 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	 	 $sql ="select attachment,filename,path,isimage from pre_forum_attachment_".$vv['tableid'];
 	 	     $sql.=" where aid= ".$vv['aid'];
 	 	     $attachment=DB::fetch_all($sql);
-	 	       $url="www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['attachment'];
-	 	       $thumb="www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['path'];
+	 	       $url="http://www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['attachment'];
+	 	       $thumb="http://www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['path'];
 			 $singlea[]=array('type'=>$attachment[0][thumb],'url'=>$url,'thumb'=>$thumb);
 		 	 }
 		     }
