@@ -1,6 +1,6 @@
 <?php
 define('DIRECTORY_SEPARATO','/');
-define('WWW','http://www.enjoyxue.com');
+define('WWW','www.enjoyxue.com');
 
 function set_home($uid, $path ) { 
     $dir1=date('Ym');
@@ -70,7 +70,7 @@ function rand_22()
 	   if($type==2&&$res1){
 	   echo json_encode(array("url"=>WWW."/commerce/data/attachment/forum/$attachment"));
 	   }else  if($type==1&&$res1&&$im){
-	   echo json_encode(array("url"=>WWW."/commerce/data/attachment/forum/$attachment",'thumb'=>WWW."/commerce/data/attachment/forum/$thumb"));
+	   echo json_encode(array("url"=>WWW."/commerce/data/attachment/forum/$attachment",'thumb'=>"localhost/commerce/data/attachment/forum/$thumb"));
 	   }else {
 	   echo json_encode(array("total_count"=>"0"));
 	   }
