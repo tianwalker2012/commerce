@@ -1,6 +1,6 @@
 <?php
 define('DIRECTORY_SEPARATO','/');
-define('WWW','http://www.enjoyxue.com');
+define('WWW','www.enjoyxue.com');
 
 function set_home($uid, $path ) { 
     $dir1=date('Ym');
