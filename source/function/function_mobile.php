@@ -161,7 +161,7 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	 	 $sql ="select attachment,filename from pre_forum_attachment_".$vv['tableid'];
 	 	     $sql.=" where aid= ".$vv['aid'];
 	 	     $attachment=DB::fetch_all($sql);
-			  $singlea[]= $attachment[0];
+			  $singlea[]= "www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['attachment'];
 		 	 }
 		     }
 	       return $singlea;
@@ -176,14 +176,14 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 		$sql.=" on t.tid=p.tid ";
 		$sql.=" left join pre_forum_post_location l on t.tid=l.tid ";
 		$sql.=" where p.tid=$tid and p.first=0 ";
-	      $sql.="order by t.dateline desc ";
+	    $sql.="order by t.dateline desc ";
 	    $comment=DB::fetch_all($sql);
 		foreach ($comment as $k=>$v){
 		     $attachment=get_attachment($v);
 		     $v['attachment']=$attachment;
 		     $reply[]=$v;
 	    } 
-	    return $reply;
+	     return $reply;
 	 }
 	 
 	 
