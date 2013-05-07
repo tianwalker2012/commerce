@@ -21,7 +21,7 @@ $latitude=$_GET['latitude'];
 $tid=$_GET['tid'];
 $location=$_GET['location'];
 $first=0;
-
+         
 if(empty($tid)){
 $newthread = array( 
 		'fid' => 2,      //fid 就是forum_post 中id 
