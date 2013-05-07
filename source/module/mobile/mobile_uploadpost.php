@@ -56,7 +56,7 @@ function rand_22()
 		            );
 	   $res=c::t('forum_attachment_n')->addaction($data);
 	   if($res){
-	   echo json_encode(array("url"=>"www.enjoyxue.com/commerce/data/attachment/forum/.$attachment"));
+	   echo json_encode(array("url"=>"www.enjoyxue.com/commerce/data/attachment/forum/$attachment"));
 	   }else {
 	   echo json_encode(array("total_count"=>"0"));
 	   }
