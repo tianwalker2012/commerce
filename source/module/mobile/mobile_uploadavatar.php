@@ -22,7 +22,7 @@ function set_home($uid, $dir ) {
 		$dir2 = substr($uid, 3, 2);
 		$dir3 = substr($uid, 5, 2);
 	 return $path.DIRECTORY_SEPARATOR.$dir1.DIRECTORY_SEPARATOR.$dir2.DIRECTORY_SEPARATOR.$dir3;
-	}
+	}s
  if(!empty($_FILES)){
  	      $uid=$_GET['uid'];
  	    if($uid<10)
@@ -43,7 +43,7 @@ function set_home($uid, $dir ) {
 	 
  	$max=move_uploaded_file($_FILES['avatarupload']['tmp_name'], $pathavatar.DIRECTORY_SEPARATOR.$uids."_avatar_small.jpg");
  	 DB::fetch_all("update pre_common_member set avatarstatus=1 where uid=".$uid);
- 	 echo json_encode(array(200));
+ 	 echo json_encode(array('avatar'=>"http://www.enjoyxue.com/commerce/uc_server/avatar.php?uid=".$uid."&size=small"));
 	}else {
       $uid=$_GET['uid'];
 	echo "<form method='post' action='http://www.enjoyxue.com/commerce/mobile.php?mod=uploadavatar&uid=$uid'". "enctype='multipart/form-data'>
