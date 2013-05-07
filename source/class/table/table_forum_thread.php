@@ -211,7 +211,7 @@ class table_forum_thread extends discuz_table
 			$sql.=" from pre_forum_thread t inner join pre_forum_post p ";
 			$sql.=" on t.tid=p.tid ";
 			$sql.=" left join pre_forum_post_location l on t.tid=l.tid ";
-			$sql.=" where t.authorid in  ( $uids  ) and p.first=1 ";
+			$sql.=" where t.authorid in  ( $uids  ) and p.first=1  ";
 			$sql.="order by t.dateline desc  limit $start,$limit ";
 	    return	DB::fetch_all($sql);
 		}

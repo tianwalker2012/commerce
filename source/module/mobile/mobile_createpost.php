@@ -1,16 +1,27 @@
 <?php 
  
- 
+ /*
 
+echo "<pre>";
+$authorid=1;
+$result=c::t('common_member')->fetch_all_username_by_uid(array('uid'=>$authorid));
+$subject='test creatpost123';
+$message='ok let us go right now i begin to test the creatpost interferce';
+$longitude='110';
+$latitude='123';
+ $tid='123';
+$location="上海市！";
+*/
 $authorid=$_GET['authorid'];
 $result=c::t('common_member')->fetch_all_username_by_uid(array('uid'=>$authorid));
 $subject=$_GET['subject'];
 $message=$_GET['message'];
 $longitude=$_GET['longitude'];
 $latitude=$_GET['latitude'];
-$tid=$_GET['reply'];
+$tid=$_GET['tid'];
 $location=$_GET['location'];
 $first=0;
+
 if(empty($tid)){
 $newthread = array( 
 		'fid' => 2,      //fid 就是forum_post 中id 
@@ -73,6 +84,7 @@ if(!empty($latitude)&&!empty($location)){
 				'location' => $location,
 			));
 }
-  echo json_encode(array('pid'=>$result[0]['num']));   
+$pid=DB::fetch_all("select max(pid) pid from pre_forum_post ");
+  echo json_encode(array('pid'=>$pid[0]['pid']));   
 	   
 ?>

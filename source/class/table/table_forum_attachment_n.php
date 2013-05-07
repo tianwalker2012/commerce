@@ -151,7 +151,7 @@ class table_forum_attachment_n extends discuz_table
 	  	 DB::fetch_all($sql);
 	     $aid=DB::insert_id();
 	     $data['tids']=$data['tid']%10;
-	     $sql1="insert into pre_forum_attachment_".$data['tids']."  (aid,tid,pid,uid,dateline,filename,filesize,attachment) values(".$aid.",".$data['tid'].",".$data['pid'].",".$data['uid'].",".time().",'".$data['filename']."',".$data['fsize'].",'".$data['attachment']."' ) ";
+	     $sql1="insert into pre_forum_attachment_".$data['tids']."  (aid,tid,pid,uid,dateline,filename,filesize,attachment,isimage,path) values(".$aid.",".$data['tid'].",".$data['pid'].",".$data['uid'].",".time().",'".$data['filename']."',".$data['fsize'].",'".$data['attachment']."','".$data['isimage']."','".$data['path']."' ) ";
 	     DB::fetch_all($sql1);
 	     return $aid;
 	  }

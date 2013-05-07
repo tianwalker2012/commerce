@@ -154,17 +154,19 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 function get_attachment($v)
 	 {
 		   $singlea=array();
-	 	   if($v['attachment']==2){
-	 	 	$sql="select aid,tid,pid,tableid from pre_forum_attachment where tid=".$v['tid'];
+	 	   if($v['attachment']!=0){
+	 	 	$sql="select aid,tid,pid,tableid  from pre_forum_attachment where tid=".$v['tid'];
 	 	 	$attachment=DB::fetch_all($sql);
 	 	   	foreach ($attachment as $k=>$vv){
-	 	 	 $sql ="select attachment,filename from pre_forum_attachment_".$vv['tableid'];
+	 	 	 $sql ="select attachment,filename,path,isimage from pre_forum_attachment_".$vv['tableid'];
 	 	     $sql.=" where aid= ".$vv['aid'];
 	 	     $attachment=DB::fetch_all($sql);
-			  $singlea[]= "www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['attachment'];
+	 	       $url=WWW."/commerce/data/attachment/forum/".$attachment[0]['attachment'];
+	 	       $thumb=WWW."/commerce/data/attachment/forum/".$attachment[0]['path'];
+			 $singlea[]=array('type'=>$attachment[0][thumb],'url'=>$url,'thumburl'=>$thumb);
 		 	 }
 		     }
-	       return $singlea;
+	      return $singlea;
 	        
 	 }
 	 
@@ -179,14 +181,21 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	    $sql.="order by t.dateline desc ";
 	    $comment=DB::fetch_all($sql);
 		foreach ($comment as $k=>$v){
-		     $attachment=get_attachment($v);
-		     $v['attachment']=$attachment;
-		     $reply[]=$v;
+	     $attachment=get_attachment($v);
+	     $v['attachment']=$attachment;
+	     $reply[]=$v;
 	    } 
 	     return $reply;
 	 }
 	 
-	 
+	 function get_image_attachment($filename,$newwidth,$newheight,$path,$name,$thumbim=''){
+		list($width, $height) = getimagesize($filename);
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filename);
+		imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		// 输出给浏览器
+	    return imagepng($thumb,$path.$name.'_'.$thumbim.'.jpg');
+	 }
 	 
 	 
 

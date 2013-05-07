@@ -87,7 +87,7 @@ class table_forum_forum extends discuz_table
 		$sql ="SELECT f.fid,f.name,ff.description,ff.founderuid,ff.foundername,ff.rank, ff.category,ff.dateline,ff.membernum,ff.foundername,ff.description,ff.activity   ";
 		// $sql.=" , ( select count(*) from pre_forum_thread  )   dynamic_count ";
 		$sql.="FROM ".DB::table($this->_table)." f LEFT JOIN ".DB::table('forum_forumfield')." ff  on f.fid=ff.fid WHERE f.status='3' AND f.fid in ( $grouplist ) ";
-	    $sql.="ORDER BY   ff.dateline desc limit $start,$limit ";
+	     $sql.="ORDER BY   ff.dateline desc limit $start,$limit ";
 		return DB::fetch_all($sql);
 	}
 	
