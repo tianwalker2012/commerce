@@ -79,7 +79,7 @@ function rand_22()
     }else {
       $pid=$_GET['pid'];
      $type=$_GET['type'];
-	echo "<form method='post' action='http://".WWW."/commerce/mobile.php?mod=uploadpost&pid=$pid&type=$type'". "enctype='multipart/form-data'>
+	echo "<form method='post' action='http://www.enjoyxue/commerce/mobile.php?mod=uploadpost&pid=$pid&type=$type'". "enctype='multipart/form-data'>
 	<input type=file name='postupload' />
 	<input type=submit name='submit' />
 	</form> ";
