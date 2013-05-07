@@ -1,6 +1,6 @@
 <?php
 define('DIRECTORY_SEPARATO','/');
-define('WWW','www.enjoyxue.com');
+define('WWW','http://www.enjoyxue.com');
 
 function set_home($uid, $path ) { 
     $dir1=date('Ym');
@@ -70,7 +70,7 @@ function rand_22()
 	   if($type==2&&$res1){
 	   echo json_encode(array("url"=>WWW."/commerce/data/attachment/forum/$attachment"));
 	   }else  if($type==1&&$res1&&$im){
-	   echo json_encode(array("url"=>WWW."/commerce/data/attachment/forum/$attachment","thumb"=>WWW."/commerce/data/attachment/forum/$thumb"));
+	   echo json_encode(array("url"=>WWW."/commerce/data/attachment/forum/$attachment",'thumb'=>WWW."/commerce/data/attachment/forum/$thumb"));
 	   }else {
 	   echo json_encode(array("total_count"=>"0"));
 	   }
@@ -79,7 +79,7 @@ function rand_22()
     }else {
       $pid=$_GET['pid'];
      $type=$_GET['type'];
-	echo "<form method='post' action='http://www.enjoyxue/commerce/mobile.php?mod=uploadpost&pid=$pid&type=$type'". "enctype='multipart/form-data'>
+	echo "<form method='post' action='http://www.enjoyxue.com/commerce/mobile.php?mod=uploadpost&pid=$pid&type=$type'". "enctype='multipart/form-data'>
 	<input type=file name='postupload' />
 	<input type=submit name='submit' />
 	</form> ";

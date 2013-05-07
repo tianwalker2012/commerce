@@ -163,7 +163,7 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	     $attachment=DB::fetch_all($sql);
 	 	       $url="www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['attachment'];
 	 	       $thumb="www.enjoyxue.com/commerce/data/attachment/forum/".$attachment[0]['path'];
-			 $singlea[]=array('type'=>$attachment[0][thumb],'url'=>$url,'thumburl'=>$thumb);
+			 $singlea[]=array('type'=>$attachment[0][thumb],'url'=>$url,'thumb'=>$thumb);
 		 	 }
 		     }
 	      return $singlea;
