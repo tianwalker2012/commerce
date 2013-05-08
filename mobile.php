@@ -1,7 +1,7 @@
 <?php
 define('APPTYPEID', 1115111);
 define('CURSCRIPT', 'mobile');
-define('IN_UC', true);
+define('IN_UC', true); 
 define('UC_API', true);
 require_once "./source/class/class_core.php";
 

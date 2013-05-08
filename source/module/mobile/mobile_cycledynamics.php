@@ -1,6 +1,6 @@
 <?php
 $cycleid=$_GET['cycleid'];
-$start=$_GET['start'];
+$start=$_GET['start']; 
 $limit=$_GET['limit'];
 $sql="select uid from pre_forum_groupuser where fid=".$cycleid;
 $userlist=DB::fetch_all($sql);

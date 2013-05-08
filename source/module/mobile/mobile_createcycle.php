@@ -14,7 +14,7 @@
 	$authorname=$_GET['authorname'];
 	$rank=$_GET['rank'];
 	$category=$_GET['category'];
-
+  
 
 	 $fid = C::t('forum_forum')->insert(array('fup'=>'37','type' => 'sub', 'name' => $forumname, 'status' => 3, 'displayorder' => 0), 1);
 	 C::t('forum_forumfield')->insert(array('fid' => $fid,'description'=>$introduction,
