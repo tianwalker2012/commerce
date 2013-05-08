@@ -22,7 +22,7 @@ function set_home($uid, $dir ) {
 		$dir2 = substr($uid, 3, 2);
 		$dir3 = substr($uid, 5, 2);
 	 return $path.DIRECTORY_SEPARATOR.$dir1.DIRECTORY_SEPARATOR.$dir2.DIRECTORY_SEPARATOR.$dir3;
-	}s
+	}
  if(!empty($_FILES)){
  	      $uid=$_GET['uid'];
  	    if($uid<10)
