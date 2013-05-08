@@ -20,7 +20,7 @@
 	 C::t('forum_forumfield')->insert(array('fid' => $fid,'description'=>$introduction,
 	                                        'rank'=>$rank,'category'=>$category,
                                             'founderuid'=>$authorid,'foundername'=>$authorname,
-	                                        'membernum'=>1, 
+	                                        'membernum'=>1, 'dateline'=>time()
 	                                         ));
 	  $index=c::t('forum_groupuser')->insert($fid,$authorid,$authorname,time());
    echo json_encode(array('cycleid'=>$fid));
