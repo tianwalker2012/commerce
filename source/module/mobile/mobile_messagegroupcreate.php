@@ -1,6 +1,6 @@
 <?php
  
-$from=$_GET['from'];
+$from=$_GET['authorid '];
 $persons=$_GET['persons'];//数组
 $to=implode(',', $persons);
 $subject=$_GET['name'];
