@@ -139,11 +139,11 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 	foreach ($result as $k=>$v){
 	 		array_push($persons, $v['uid']);
 	 	}
-	 	$sql ="select f.fid,f.name from pre_forum_forum f  ";
+	 	$sql ="select f.fid,f.name,ff.dateline from pre_forum_forum f inner join pre_forum_forumfield ff on f.fid=ff.fid   ";
 	 	$sql.=" where f.fid=".$gid;
 	 	$result=DB::fetch_all($sql);
 	 	if(!empty($result)){
-	 		$data=array('cycleid'=>$result[0]['fid'],'name'=>$result[0]['name'],'persons'=>$persons);
+	 		$data=array('cycleid'=>$result[0]['fid'],'name'=>$result[0]['name'],'persons'=>$persons,'dateline'=>$result[0]['dateline']);
 	 	}else {
 	 		$data=array('total_count'=>0);
 	 	}
