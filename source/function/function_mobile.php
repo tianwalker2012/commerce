@@ -197,6 +197,12 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	    return imagepng($thumb,$path.$name.'_'.$thumbim.'.jpg');
 	 }
 	 
+	 function update_group_member($cid,$action)
+	 {
+	 	return DB::fetch_all("update pre_forum_groupuser set membernum+".$action." where fid=".$cid);
+	 	
+	 }
+	 
 	 
 
 ?>
