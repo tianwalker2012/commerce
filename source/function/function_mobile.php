@@ -199,7 +199,7 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 
 	 function update_group_member($cid,$action)
 	 {
-	 	return DB::fetch_all("update pre_forum_groupuser set membernum+".$action." where fid=".$cid);
+	 	return DB::fetch_all("update pre_forum_forumfield set membernum=membernum+".$action." where fid=".$cid);
 	 	
 	 }
 	 
