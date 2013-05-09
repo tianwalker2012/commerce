@@ -33,7 +33,8 @@ if($profile)
 }
 else
  { 
- 	echo json_encode(array('500'));
+ header('HTTP/1.1 406 Not Acceptable'); 
+ header("status: 406 Not Acceptable"); 
  }
  
 ?>
