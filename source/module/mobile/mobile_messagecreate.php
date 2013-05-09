@@ -29,4 +29,4 @@ $pmid=$pm[0]['pmid'];
 $result=uc_pm_send($from, $to, $subject, $message,1,$pmid,0,$pmtype);
 $sql="select max(pmid) pmid from pre_ucenter_pm_indexes ";
 $data=DB::fetch_all($sql);
-echo json_encode(array('plid'=>$data[0]['plid']));
+echo json_encode(array('plid'=>$data[0]['pmid']));
