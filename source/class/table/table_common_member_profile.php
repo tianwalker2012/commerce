@@ -105,6 +105,7 @@ class table_common_member_profile extends discuz_table_archive
 			//$sql.="', location ='".$infomation['location'];
 			$sql.="', company ='".$infomation['company'];
 			$sql.="', occupation ='".$infomation['industry'];
+			$sql.="', bio ='".$infomation['bio'];
 		    $sql.="', gender ='".$infomation['gender'];
 		    $sql.="' where uid = '".$infomation['uid']."'";
 			$result=DB::query($sql);

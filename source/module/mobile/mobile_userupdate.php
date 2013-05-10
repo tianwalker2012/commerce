@@ -39,6 +39,7 @@ $gender=$_POST['gender'];
 					'company'=>$_GET['company'],
 					'industry'=>$_GET['industry'],
 					'gender'=>$_GET['gender'],
+                    'bio'=>$_GET['bio'],
 					'uid'=>$_GET['uid']
 );
 $result=c::t('common_member_profile')->updateinfo($infomation);
