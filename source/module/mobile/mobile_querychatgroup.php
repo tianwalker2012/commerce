@@ -3,7 +3,7 @@ $plid=$_GET['plid'];
 $start=$_GET['start'];
 $limit=$_GET['limit'];
 $lastint=$plid % 10;
-  $sql="select m.pmid,l.plid,l.subject,m.message,l.pmtype,m.authorid author,m.dateline s from pre_ucenter_pm_messages_$lastint m inner join pre_ucenter_pm_lists l on m.plid=l.plid where l.plid=$plid  order by m.dateline desc limit $start,$limit ";
+  $sql="select m.pmid,l.plid,l.subject,m.message,l.pmtype type,m.pmtype pmtype,m.authorid author,m.dateline dateline from pre_ucenter_pm_messages_$lastint m inner join pre_ucenter_pm_lists l on m.plid=l.plid where l.plid=$plid  order by m.dateline desc limit $start,$limit ";
 $result=DB::fetch_all($sql);
 $num=count($result);
 if($result){
