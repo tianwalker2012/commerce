@@ -21,7 +21,7 @@ define('WWW','http://www.enjoyxue.com');
 	 $thumb="";
 	 if($max){
 	  if($type==2){
-	  	if($ext=='gif'){
+	  	if($ext!='gif'){
 			 $im=get_image_attachment($pathpost.DIRECTORY_SEPARATO.$file_name.'.'.$ext, '70', '70', $pathpost.'/', $file_name,'thumb');
              if($im){
              $thumb=WWW.'/commerce/data/attachment/pm/'.date('Ym').DIRECTORY_SEPARATO.date('d').DIRECTORY_SEPARATO.$file_name."_thumb.jpg";
