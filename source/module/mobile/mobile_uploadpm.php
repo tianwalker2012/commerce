@@ -17,15 +17,20 @@ define('WWW','http://www.enjoyxue.com');
 	 $file_name=rand_22();
 	 $ext=pathinfo($_FILES['postupload']['name'], PATHINFO_EXTENSION);
 	 $attachment=date('Ym').DIRECTORY_SEPARATO.date('d').DIRECTORY_SEPARATO.$file_name.".".$ext;
-	 
 	 $max=move_uploaded_file($_FILES['postupload']['tmp_name'], $pathpost.DIRECTORY_SEPARATO.$file_name.'.'.$ext);
 	 $thumb="";
 	 if($max){
 	  if($type==2){
+	  	if($ext=='gif'){
 			 $im=get_image_attachment($pathpost.DIRECTORY_SEPARATO.$file_name.'.'.$ext, '70', '70', $pathpost.'/', $file_name,'thumb');
              if($im){
              $thumb=WWW.'/commerce/data/attachment/pm/'.date('Ym').DIRECTORY_SEPARATO.date('d').DIRECTORY_SEPARATO.$file_name."_thumb.jpg";
              }
+	  	}
+	  	else 
+		  	{
+             $thumb=WWW.'/commerce/data/attachment/pm/'.date('Ym').DIRECTORY_SEPARATO.date('d').DIRECTORY_SEPARATO.$file_name."_thumb.jpg";
+		  	}
 	  }
 	}
 	$pmid=0;
