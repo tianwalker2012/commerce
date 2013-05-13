@@ -10,7 +10,7 @@ $discuz = C::app();
 $mobilelist = array('login','userdetail','queryfriend','token','dynamics','persondynamics',
                     'uploadavatar','uploadpost','addfriendid','createcycle','cycledynamics',
                     'messagesession','messagecreate','querychatgroup','querychat','messagegroupcreate',
-                    'groupadd','groupremove','checkincycle','changegroupname',
+                    'groupadd','groupremove','checkincycle','changegroupname','uploadpm',
                     'queryallcycle','querymycycle','querycycleuser','cycleadd','searchcycle','cyclequit',
                     'register','createpost','profilesearch','userupdate','sendmsg', 'addtoken', 'profiledetail', 'profilesearch', 'friendlist', 'friendadd', 'deletefriend','forumpost','forumreply','singlepost','postlist','postone');
 $discuz->cachelist = $mobilelist;

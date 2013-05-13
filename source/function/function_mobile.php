@@ -204,5 +204,37 @@ function common_simplepush($deviceToken,$plid,$subject,$time,$sender_id)
 	 }
 	 
 	 
+	 function set_home($uid, $path ) { 
+    $dir1=date('Ym');
+    $dir2=date('d');
+	if(!is_dir($path.$dir1)){
+		mkdir($path.$dir1,0777);
+	}
+	if(!is_dir($path.$dir1.DIRECTORY_SEPARATO.$dir2)){
+		mkdir($path.$dir1.DIRECTORY_SEPARATO.$dir2,0777);
+	}
+	}
+	
+ function get_home($uid,$path) { 
+ 	  $dir1=date('Ym');
+	  $dir2=date('d');
+	 return $path.$dir1.DIRECTORY_SEPARATO.$dir2.DIRECTORY_SEPARATO;
+	}
+	
+function rand_22()
+{
+	$pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
+	$code1="";
+	$code2="";
+	for($i = 0; $i < 6; $i++) {
+	        $code1 .= $pattern{mt_rand(0, 10)};
+	};
+	for($i = 0; $i < 16; $i++) {
+	        $code2 .= $pattern{mt_rand(0, 36)};
+	};
+	return $code1.$code2;
+}
+	 
+	 
 
 ?>
